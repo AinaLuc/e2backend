@@ -10,8 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@azure/communication-email": "^1.0.0",
     "axios": "^1.6.5",
     "body-parser": "^1.20.2",
-    "express": "^4.18.2"
+    "cors": "^2.8.5",
+    "cron": "^3.1.6",
+    "dotenv": "^16.3.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.0",
+    "node-cron": "^3.0.3"
   }
 }

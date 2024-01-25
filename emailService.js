@@ -4,18 +4,18 @@ const { EmailClient, KnownEmailSendStatus } = require("@azure/communication-emai
 require("dotenv").config();
 
 class EmailService {
-  static async sendOrderConfirmation(email, orderDetails) {
+  static async send(email,dynamicTemplate,title, firstName) {
     const connectionString = process.env['AZURE_EMAIL_CONNECTION_STRING'];
     const emailClient = new EmailClient(connectionString);
 
     try {
-      const templatePath = path.join(__dirname, 'templates', 'orderConfirmation.ejs');
-      const templateContent = await ejs.renderFile(templatePath, { orderDetails });
+      const templatePath = path.join(__dirname, 'templates', dynamicTemplate);
+      const templateContent = await ejs.renderFile(templatePath,firstName);
 
       const message = {
         senderAddress: "info@tanamtech.online",
         content: {
-          subject: "Order Confirmation",
+          subject: title,
           html: templateContent,
         },
         recipients: {
@@ -41,7 +41,7 @@ class EmailService {
     }
   }
 
-  static async sendRelanceEmail(email,clientId) {
+ /* static async sendRelanceEmail(email,clientId) {
     const connectionString = process.env['AZURE_EMAIL_CONNECTION_STRING'];
     const emailClient = new EmailClient(connectionString);
 
@@ -103,7 +103,7 @@ static async sendFollowUpEmail(email, daysAfter, clientId, businessDetails) {
     } catch (error) {
         console.error('Error sending follow-up email:', error);
     }
-}
+}*/
 
 
 
