@@ -34,7 +34,7 @@ mongoose.connect(mongoConnectionString)
 
   app.use(cors());
 
-Schedule the cron job to run every 5 minutes
+//Schedule the cron job to run every 5 minutes
 cron.schedule('*/5 * * * *', async () => {
   try {
     const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
